@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        div{
+            width: 300px;
+            /* height: 430px; */
+            background-color: #00a3df;
+            padding: 20px 20px;
+            border-radius: 10px;
+        }
+        input{
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px 2px;
+            border: none;
+            border-radius: 20px;
+        }
+        button{
+            width: 100%;
+            padding: 10px 0px;
+            cursor: pointer;
+        }
+        p{
+            color: aliceblue;
+            font-size: 18px;
+        }
+        #division{
+            color: rgb(132, 255, 0);
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" placeholder="Enter roll number" id="rollnum">
+        <input type="text" placeholder="Enter roll code" id="rollcode">
+        <p>Name: <span id="name"></span></p>
+        <p>Physics: <span id="physics"></span></p>
+        <p>Chemestry: <span id="chemistry"></span></p>
+        <p>Math: <span id="math"></span></p>
+        <p>Hindi: <span id="hindi"></span></p>
+        <p>English: <span id="english"></span></p>
+        <p>Total Mark: <span id="mark"></span></p>
+        <p id="division"></p>
+        <button id="btn">Submit</button>
+    </div>
+    <script>
+        
+        let buttons = document.getElementById("btn");
+
+        let studentsDetails = [
+            {name: "Rohit Kumar", roll: 20210, rollcode: 6202, physics: 93, chemestry: 44, math:76, hindi: 69, english: 47,},
+            {name: "Raju Kumar", roll: 20211, rollcode: 6202, physics: 83, chemestry: 70, math:76, hindi: 82, english: 31},
+            {name: "Sajan", roll: 20212, rollcode: 6202, physics: 56, chemestry: 52, math:76, hindi: 23, english: 49},
+            {name: "Rakesh", roll: 20213, rollcode: 6202, physics: 93, chemestry: 42, math:76, Hindi: 79, english: 75},
+            {name: "Zain", roll: 20214, rollcode: 6202, physics: 93, chemestry: 55, math:76, hindi: 39, english: 42},
+            {name: "Raj", roll: 20215, rollcode: 6202, physics: 91, chemestry: 62, math:76, hindi: 50, english: 96},
+            {name: "Sonu", roll: 20216, rollcode: 6202, physics: 09, chemestry: 52, math:76, hindi: 49, english: 57},
+            {name: "Deepak Kumar", roll: 20217, rollcode: 6202, physics: 33, chemestry: 40, math:03, hindi: 33, english: 29}
+        ]
+        buttons.addEventListener("click", ()=>{
+        let RollNumber = document.getElementById("rollnum").value;
+        let RollCode = document.getElementById("rollcode").value;
+        let stuName = document.getElementById("name");
+        let physics = document.getElementById("physics");
+        let chemistry = document.getElementById("chemistry");
+        let math = document.getElementById("math");
+        let hindi = document.getElementById("hindi");
+        let english = document.getElementById("english");
+        let totalMark = document.getElementById("mark");
+        let division = document.getElementById("division");
+            for(let i =0; i<studentsDetails.length; i++){
+                if(RollNumber == studentsDetails[i].roll && RollCode == studentsDetails[i].rollcode){
+                    stuName.innerText = studentsDetails[i].name;
+                    physics.innerText = studentsDetails[i].physics;
+                    chemistry.innerText = studentsDetails[i].chemestry;
+                    math.innerText = studentsDetails[i].math;
+                    hindi.innerText = studentsDetails[i].hindi;
+                    english.innerText = studentsDetails[i].english;
+                    totalMark.innerText = studentsDetails[i].physics+ studentsDetails[i].chemestry + studentsDetails[i].math + studentsDetails[i].hindi + studentsDetails[i].english;
+                }
+            }
+            if(Number(totalMark.innerText) >= 300){
+                division.innerHTML = "First Division";
+            }
+            else if(Number(totalMark.innerText) >= 230 && Number(totalMark.innerText) < 300){
+                division.innerHTML = "Second Division";
+            }
+            else if(Number(totalMark.innerText) >= 150 && Number(totalMark.innerText) < 230){
+                division.innerHTML = "Third Division";
+            }
+            else{
+                division.innerHTML = "Fel";
+            }
+        })
+
+
+    </script>
+</body>
+</html>
